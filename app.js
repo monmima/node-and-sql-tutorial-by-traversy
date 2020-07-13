@@ -1,6 +1,7 @@
 // https://www.youtube.com/watch?v=EN6Dx22cPRI
 
 const express = require("express");
+const path = require('path');
 const mysql = require("mysql");
 
 // create connection
@@ -23,6 +24,20 @@ db.connect((err) => {
 });
 
 const app = express();
+
+/**
+ * serving static files from the "public" folder
+ * this includes: image, HTML and JS files, etc.
+ */
+app.use(express.static(path.resolve(__dirname, 'public')));
+
+// /**
+//  * handling 404 errors
+//  * source: https://expressjs.com/en/starter/faq.html
+//  */
+// app.use(function (req, res, next) {
+//     res.status(404).send("404 - Sorry can't find that!")
+// });
 
 // create DB
 app.get("/createdb", (req, res) => {
@@ -49,7 +64,7 @@ app.get("/create-post-table", (req, res) => {
 
 // insert post 1
 app.get("/add-post-1", (req, res) => {
-    let post = {title: "Post One", body: "This is post number one."}
+    let post = {title: "Post One", body: "This is post number 1."}
     let sql = "INSERT INTO posts SET ? ";
     let query = db.query(sql, post, (err, result) => {
         if (err) {
@@ -63,7 +78,7 @@ app.get("/add-post-1", (req, res) => {
 
 // insert post 2
 app.get("/add-post-2", (req, res) => {
-    let post = {title: "Post 2", body: "This is post number one."}
+    let post = {title: "Post 2", body: "This is post number 2."}
     let sql = "INSERT INTO posts SET ? ";
     let query = db.query(sql, post, (err, result) => {
         if (err) {
@@ -122,7 +137,8 @@ app.get("/delete-post/:id", (req, res) => {
     let sql = `DELETE FROM posts WHERE id = ${req.params.id}`;
     let query = db.query(sql, (err, result) => {
         if (err) {
-            throw err;
+            // throw err;
+            console.log("Error... On Linux, make sure you launch this file as a root user: /opt/lampp/manager-linux-x64.run");
         } else {
             console.log(result);
             res.send("Post deleted...");
