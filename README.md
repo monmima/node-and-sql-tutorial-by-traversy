@@ -18,4 +18,4 @@ Then, I created similar projects myself. They were meant to consolidate my newly
 If you want to find out more about using Node.js and SQL together, try these two repositories:
 
 - [More in-depth aide-mémoire based on the content of this tutorial](https://github.com/monmima/node-and-sql-aide-memoire-by-monmima)
-- [Small app dDisplaying portraits and info from the database](https://github.com/search?q=user%3Amonmima+sql)
+- [Small app displaying portraits and info from the database](https://github.com/search?q=user%3Amonmima+sql)
