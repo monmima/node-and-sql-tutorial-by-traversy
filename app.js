@@ -11,7 +11,7 @@ const db = mysql.createConnection({
     password: "",
 
     // une fois l'appli créée, on peut décommenter la ligne suivante
-    database: "nodemysql"
+    database: "nodemysql_traversy"
 });
 
 // connect
@@ -41,7 +41,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 // create DB
 app.get("/createdb", (req, res) => {
-    let sql = "CREATE DATABASE nodemysql";
+    let sql = "CREATE DATABASE nodemysql_traversy";
     db.query(sql, () => {
         if (err) {
             throw err;
